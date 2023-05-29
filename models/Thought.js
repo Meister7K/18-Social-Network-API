@@ -7,7 +7,7 @@ const thoughtSchema = new Schema(
       type: String,
       required: true,
       minLength: 1,
-      maxLength: 300,
+      maxLength: 500,
     },
     username: {
       type: String,
@@ -15,10 +15,10 @@ const thoughtSchema = new Schema(
       minLength: 1,
     },
     reactions: [reactionSchema],
-    createdAt: {
+    created_at: {
       type: Date,
       default: Date.now,
-      get: (timestamp) => new Date(timestamp).toLocaleDateString(),
+      get: timestamp => new Date(timestamp).toLocaleDateString(),
     },
   },
   {

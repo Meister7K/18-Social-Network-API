@@ -26,6 +26,11 @@ const userSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'User',
         }],
+        created_at:{
+            type: Date,
+      default: Date.now,
+      get: timestamp => new Date(timestamp).toLocaleDateString(),
+        },
     },
     {
         toJson: {
