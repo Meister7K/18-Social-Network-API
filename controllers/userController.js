@@ -44,14 +44,14 @@ const userController = {
             return res.status(500).json(err);
         }
     },
+    //!
     async updateUser(req,res){
         try{
-            const updateUserData = User.findOneAndUpdate(req.params.id,req.body, {new: true});
+            const updateUserData = User.findByIdAndUpdate(req.params.userId, req.body, {runValidators: true, new: true});
 
             if(!updateUserData) return res.status(404).json({message:'User not found'});
 
-            res.json(updateUserData)
-
+            res.json(updateUserData);
 
         } catch(err){
             console.log(err);
@@ -60,11 +60,11 @@ const userController = {
     },
     async deleteUser(req,res){
         try{
-            const deleteUserData = await User.findOneAndDelete(req.params.id);
+            const deleteUserData = await User.findOneAndDelete({_id: req.params.userId});
 
             if(!deleteUserData) return res.status(404).json({message:'User not found'});
 
-            res.json({message:'User Terminated'})
+            res.json({message:`User Terminated ${deleteUserData}`});
 
         } catch(err){
             console.log(err);
