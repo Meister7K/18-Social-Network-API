@@ -1,4 +1,6 @@
-// set up model exports like const User = require('./User');
+const User = require('./User');
+const Thought =require('./Thought');
+const Reaction = require('./Reaction')
 
 
-module.exports = {};
+module.exports = {User,Thought,Reaction};
