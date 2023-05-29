@@ -86,7 +86,26 @@ const thoughtController = {
                 {runValidators: true, new: true}
             );
             
+            if(!newReaction) return res.status(404).json({message: 'no thought found'});
+
+            res.json(newReaction);
+
+        } catch(err){
+            console.log(err);
+            return res.status(500).json(err);
+        }
+    },
+    async deleteReaction(req,res){
+        try{
+            const delReaction = await Thought.findOneAndUpdate(
+                {_id: req.params.thoughtId},
+                {$pull: {reactions: {reactionId: req.params.reactionId}}},
+                {runValidators: true, new: true}
+            );
             
+            if(!delReaction) return res.status(404).json({message: 'no thought found'});
+
+            res.json({message: `Reaction removed`});
 
         } catch(err){
             console.log(err);
