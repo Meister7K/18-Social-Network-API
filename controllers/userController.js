@@ -94,12 +94,16 @@ const userController = {
 
             const notFriend = await User.findOneAndUpdate(
               {_id: req.params.userId},
-              {$pull:{friends: params.friendId}},
-              {/*runValidators:true,*/ new:true}  
+              {$pull:{friends: req.params.friendId}},
+              { new:true}  
             );
 
             if(!notFriend) return res.status(404).json({message:'User not found'});
 
+            console.log(req.params.friendId);//!
+            // const noFriend = !notFriend.friends.includes(res.params.friendId);
+
+            // if(noFriend) 
             res.json({message: `Friendship terminated with ${notFriend}`})
 
         } catch(err){

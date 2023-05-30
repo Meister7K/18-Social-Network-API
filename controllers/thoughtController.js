@@ -67,17 +67,17 @@ const thoughtController = {
             return res.status(500).json(err);
         }
     },
-    async getReactions(req,res){
-        try{
-            const reactionsData = await Reaction.find({});
+    // async getReactions(req,res){
+    //     try{
+    //         const reactionsData = await Thought.findById(req.params.thoughtId, {reactions: req});
 
-            res.json(reactionsData);
+    //         res.json(reactionsData);
 
-        } catch(err){
-            console.log(err);
-            return res.status(500).json(err);
-        }
-    },
+    //     } catch(err){
+    //         console.log(err);
+    //         return res.status(500).json(err);
+    //     }
+    // },
     async addReaction(req,res){
         try{
             const newReaction = await Thought.findOneAndUpdate(
@@ -95,18 +95,20 @@ const thoughtController = {
             return res.status(500).json(err);
         }
     },
-    async deleteReaction(req,res){
+    async deleteReaction(req, res){
         try{
             const delReaction = await Thought.findOneAndUpdate(
-                {_id: req.params.thoughtId},
+                { _id: req.params.thoughtId},
                 {$pull: {reactions: {reactionId: req.params.reactionId}}},
-                {runValidators: true, new: true}
+                { runValidators: true, new: true}
             );
-            
+
             if(!delReaction) return res.status(404).json({message: 'no thought found'});
 
-            res.json({message: `Reaction removed`});
+            // console.log({reactions: {reactionId: req.params.reactionId}});
 
+            res.json(delReaction);
+            //{message: `Reaction removed`}
         } catch(err){
             console.log(err);
             return res.status(500).json(err);
