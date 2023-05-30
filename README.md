@@ -27,7 +27,7 @@ This project requires the installation of:
 ## Usage
 
 
-- ![Example Video](/img/noSQL.gif)
+- ![Example Video](./img/noSQL.gif)
 
 ## License
 - MIT
@@ -35,7 +35,7 @@ This project requires the installation of:
 ## Contributions
  [Meister7K](github.com/Meister7K)
 
- 
+
  [kmanfinkel17@gmail.com](mailto:kmanfinkel17@gmail.com)
 
 
