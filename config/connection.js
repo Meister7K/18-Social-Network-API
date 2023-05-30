@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const connectString = process.env.mongoLog || 'mongodb+srv://7K:Password@classactivities.wtfnuyp.mongodb.net/socialDB'
+const connectString = process.env.mongoLog 
 
 mongoose.connect(connectString);
 
